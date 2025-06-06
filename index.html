@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="All-in-one tools website offering free image and PDF utilities.">
+  <meta name="keywords" content="image tools, pdf tools, free online tools, compress image, convert pdf">
+  <meta name="author" content="YourName">
+
+  <title>ToolNest - Free Online Tools</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f8fb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      background: #005eff;
+      color: white;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .tool-card img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .tool-card h2 {
+      color: #007bff;
+      margin-bottom: 0.5rem;
+    }
+
+    .tool-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-card a {
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .tool-card a:hover {
+      background: #218838;
+    }
+
+    .ad-section {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eaeaea;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .tool-card {
+        padding: 1rem;
+      }
+
+      .tool-card img {
+        width: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🛠️ ToolNest</h1>
+    <p>Your one-stop free toolbox for Image and PDF tasks</p>
+  </header>
+
+  <!-- Optional Ad Placement -->
+  <div class="ad-section">
+    <!-- Replace AdSense code when approved -->
+    <!-- <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+  </div>
+
+  <div class="container">
+    <div class="tools-grid">
+      
+      <!-- Image Tools -->
+      <div class="tool-card">
+        <img src="https://img.icons8.com/fluency/48/image.png" alt="Image Tools" />
+        <h2>🖼️ Image Tools</h2>
+        <p>Compress, resize, and optimize images effortlessly.</p>
+        <a href="image-tools.html">Go to Image Tools</a>
+      </div>
+
+      <!-- PDF Tools -->
+      <div class="tool-card">
+        <img src="https://img.icons8.com/fluency/48/pdf.png" alt="PDF Tools" />
+        <h2>📄 PDF Tools</h2>
+        <p>Compress, merge, and convert PDF files easily.</p>
+        <a href="pdf-tools.html">Go to PDF Tools</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 ToolNest. All rights reserved.
+  </footer>
+
+</body>
+</html>
