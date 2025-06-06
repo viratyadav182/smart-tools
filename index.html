@@ -3,53 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Compress images online with our free tool. Adjust compression level and optimize your images instantly.">
+  <meta name="description" content="Compress images online for free. Adjust quality and download optimized images instantly.">
   <meta name="keywords" content="image compressor, compress image, reduce image size, online tool">
   <meta name="author" content="YourName">
 
   <title>Free Online Image Compressor</title>
-  <link rel="stylesheet" href="style.css" />
 
-  <!-- Google AdSense Placeholder -->
+  <!-- Google AdSense Placeholder (Replace client ID when approved) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f8fb;
+      color: #333;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #007BFF;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .ad-container {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .container {
+      max-width: 700px;
+      background: white;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .container input[type="file"],
+    .container input[type="range"],
+    .container button {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+    }
+
+    label {
+      margin-top: 1rem;
+      display: block;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .result img {
+      max-width: 100%;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
 
   <header>
-    <h1>Free Online Image Compressor</h1>
-    <p>Optimize your images in seconds with adjustable compression quality.</p>
+    <h1>🖼️ Free Image Compressor</h1>
+    <p>Compress and optimize your images online. No upload needed.</p>
   </header>
 
-  <!-- Ad Area -->
+  <!-- AdSense Section -->
   <div class="ad-container">
-    <!-- Replace with your AdSense code -->
+    <!-- Replace Ad Unit ID below -->
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
          data-ad-slot="1234567890"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <main>
-    <section class="tool-container">
-      <input type="file" id="upload" accept="image/*">
-      <label for="quality">Compression Level: <span id="qualityValue">70</span>%</label>
-      <input type="range" id="quality" min="10" max="100" value="70" step="1">
-      <button onclick="compressImage()">Compress</button>
-      <canvas id="canvas" style="display:none;"></canvas>
-      <div id="result" class="result"></div>
-    </section>
-  </main>
+  <div class="container">
+    <input type="file" id="upload" accept="image/*" />
+    
+    <label for="quality">Compression Quality: <span id="qualityValue">70</span>%</label>
+    <input type="range" id="quality" min="10" max="100" value="70" step="1" />
+
+    <button onclick="compressImage()">Compress Image</button>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <div id="result" class="result"></div>
+  </div>
 
   <footer>
-    <p>&copy; 2025 Free Image Tools. All rights reserved.</p>
+    &copy; 2025 Free Image Tools. Built with ❤️ for the web.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const qualitySlider = document.getElementById('quality');
+    const qualityValue = document.getElementById('qualityValue');
+
+    qualitySlider.addEventListener('input', () => {
+      qualityValue.textContent = qualitySlider.value;
+    });
+
+    function compressImage() {
+      const fileInput = document.getElementById('upload');
+      const canvas = document.getElementById('canvas');
+      const result = document.getElementById('result');
+
+      if (!fileInput.files[0]) {
+        alert("Please select an image file!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(fileInput.files[0]);
+
+      reader.onload = function (e) {
+        const img = new Image();
+        img.src = e.target.result;
+
+        img.onload = function () {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+
+          const compressedData = canvas.toDataURL('image/jpeg', qualitySlider.value / 100);
+
+          result.innerHTML = `
+            <h3>Compressed Image:</h3>
+            <img src="${compressedData}" alt="Compressed Image" />
+            <a href="${compressedData}" download="compressed.jpg">
+              <button>Download Compressed Image</button>
+            </a>
+          `;
+        };
+      };
+    }
+  </script>
+
 </body>
 </html>
-
